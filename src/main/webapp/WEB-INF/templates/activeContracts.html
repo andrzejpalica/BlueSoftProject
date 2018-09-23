@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>ContractManagementSystem</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+          integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron"
+         style="background-image: url(https://avante.biz/wp-content/uploads/background-wallpaper/background-wallpaper-025.jpg)">
+        <div class="container">
+            <h5 class="display-4" style="color: ghostwhite">ContractManagementSystem</h5>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">Menu</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/all}"/>Wszystkie umowy</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/active}"/>Aktywne umowy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/systems}"/>Systemy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about}"/>O autorze</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<br/>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>Numer umowy</th>
+            <th>System</th>
+            <th>Aktywny od</th>
+            <th>Aktywny do</th>
+            <th>Wplywy</th>
+            <th>Okresowosc</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contract, iterationInfo : ${activeContracts}">
+            <td th:text="${contract.id}"/>
+            <td th:text="${contract.systemName}"/>
+            <td th:text="${contract.activeFrom}"/>
+            <td th:text="${contract.activeTo}"/>
+            <td th:text="${contract.income}"/>
+            <td th:text="${contract.periodicity}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".table").DataTable();
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+</html>
