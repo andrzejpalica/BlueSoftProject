@@ -8,8 +8,8 @@ import java.time.LocalDate;
 @Table (name = "contracts")
 public class MyContract extends BaseModel {
 
-    @OneToOne (fetch = FetchType.EAGER)
-    @JoinColumn(name = "system_name")
+    @ManyToOne
+    @JoinColumn(name = "system_name_id")
     private SystemName systemName;
 
     @Column(name = "active_from")
@@ -21,8 +21,8 @@ public class MyContract extends BaseModel {
     @Column
     private BigDecimal income;
 
-    @OneToOne
-    @JoinColumn
+    @ManyToOne
+    @JoinColumn (name = "periodicity_id")
     private Periodicity periodicity;
 
     @Column(name = "active")

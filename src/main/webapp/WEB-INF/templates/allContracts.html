@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pl">
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
@@ -21,25 +20,43 @@
             <h5 class="display-4" style="color: ghostwhite">ContractManagementSystem</h5>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand">Menu</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/all}"/>Wszystkie umowy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/active}"/>Aktywne umowy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/systems}"/>Systemy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/about}"/>O autorze</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand">Menu</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Start</a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" id="contractMenu" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Umowy
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" th:href="@{/all}">Wszystkie umowy</a>
+                            <a class="dropdown-item" th:href="@{/active}">Aktywne umowy</a>
+                            <a class="dropdown-item" th:href="@{/add}">Dodaj umowe</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="systemMenu" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Systemy
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" th:href="@{/allSystems}">Wszystkie systemy</a>
+                            <a class="dropdown-item" th:href="@{/active}">Szczegoly systemu</a>
+                            <a class="dropdown-item" th:href="@{/add}">Dodaj system</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/about}">O autorze</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 </div>
 <br/>
 <div class="container">
@@ -53,6 +70,7 @@
             <th scope="col">Wplywy</th>
             <th scope="col">Okresowosc</th>
             <th scope="col">Aktywna</th>
+            <th scope="col">Akcja</th>
         </tr>
         </thead>
         <tbody>
@@ -64,6 +82,9 @@
             <td th:text="${contract.income}"/>
             <td th:text="${contract.periodicity}"/>
             <td th:text="${contract.active ? 'TAK' : 'NIE'}"/>
+            <td>
+                <a th:href="@{/edit/{parametr}(parametr=${contract.id})}" th:text="Edytuj"></a>
+            </td>
         </tr>
         </tbody>
     </table>

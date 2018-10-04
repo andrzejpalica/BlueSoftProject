@@ -57,6 +57,7 @@ public class AppConfig implements ApplicationContextAware {
         dataSource.setUsername(databaseUser);
         dataSource.setPassword(databasePassword);
         dataSource.setDriverClassName(driverClassName);
+
         return dataSource;
     }
 

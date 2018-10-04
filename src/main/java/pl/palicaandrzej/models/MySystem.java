@@ -6,12 +6,18 @@ import javax.persistence.*;
 @Table(name = "systems")
 public class MySystem extends BaseModel {
 
-    @OneToOne (fetch = FetchType.EAGER)
-    @JoinColumn(name = "system_name")
+    @ManyToOne
+    @JoinColumn(name = "name_id")
     private SystemName systemName;
 
     @Column
     private String description;
+
+    @Column
+    private String technologies;
+
+    @Column
+    private String owner;
 
     public MySystem() {
     }
@@ -30,5 +36,21 @@ public class MySystem extends BaseModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getTechnologies() {
+        return technologies;
+    }
+
+    public void setTechnologies(String technologies) {
+        this.technologies = technologies;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }

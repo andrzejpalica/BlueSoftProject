@@ -60,65 +60,33 @@
 
     <br/>
 
-    <form action="#" th:action="@{/add}" th:object="${addContractDTO}" th:method="post">
+    <form action="#" th:action="@{/system/add}" th:object="${addSystemDTO}" th:method="post">
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="systemName">System</label>
-                <select class="custom-select" th:field="*{myContract.systemName}" id="systemName">
-                    <option th:each="systemName : *{systemNameList}" th:value="${systemName.id}"
-                            th:text="${systemName.name}"></option>
-                </select>
+                <label for="systemName">Nazwa systemu</label>
+                <input type="text" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm" id="systemName" th:field="*{systemName.name}"/>
             </div>
-            <div class="form-group col-md-4">
-                <label for="activeFrom">Aktywna od</label>
-                <input type="date" class="form-control" aria-label="Small"
-                       aria-describedby="inputGroup-sizing-sm" id="activeFrom" th:field="*{myContract.activeFrom}"/>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="activeTo">Aktywna do</label>
-                <input type="date" class="form-control" aria-label="Small"
-                       aria-describedby="inputGroup-sizing-sm" id="activeTo" th:field="*{myContract.activeTo}"/>
+            <div class="form-group col-md-6">
+                <label for="description">Opis</label>
+                <textarea class="form-control" id="description" rows="4" th:field="*{mySystem.description}"></textarea>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="income">Wpływy</label>
-                <div class="input-group">
-                    <input type="number" class="form-control" aria-label="Small"
-                           aria-describedby="inputGroup-sizing-sm" id="income" th:field="*{myContract.income}"/>
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">PLN netto</span>
-                    </div>
-                </div>
+                <label for="technologies">Technologie</label>
+                <input type="text" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm" id="technologies"
+                       th:field="*{mySystem.technologies}"/>
             </div>
             <div class="form-group col-md-4">
-                <label for="periodicity">Okresowość</label>
-                <select class="custom-select" th:field="*{myContract.periodicity}" id="periodicity">
-                    <option th:each="periodicity : *{periodicityList}" th:value="${periodicity.id}"
-                            th:text="${periodicity.name}"></option>
-                </select>
+                <label for="owner">Wlasciciel</label>
+                <input type="text" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm" id="owner" th:field="*{mySystem.owner}"/>
             </div>
-            <fieldset class="form-group col-md-3">
-                <legend class="col-form-label">Czy umowa jest aktywna?</legend>
-                <div class="input-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="activeIsTrue"
-                               th:value="true"
-                               th:field="*{myContract.active}" checked>
-                        <label class="form-check-label" for="activeIsTrue">
-                            TAK
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="activeIsFalse"
-                               th:value="false"
-                               th:field="*{myContract.active}" checked>
-                        <label class="form-check-label" for="activeIsFalse">
-                            NIE
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
+        </div>
+        <div>
+            <input type="hidden" th:field="*{mySystem.systemName}" th:text="*{systemName.id}"/>
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block">Dodaj umowę</button>
     </form>
