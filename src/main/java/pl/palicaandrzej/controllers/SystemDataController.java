@@ -63,13 +63,12 @@ public class SystemDataController {
     }
 
     @GetMapping("delete/{id}")
-    public String deleteSystemAndSystemName(MySystem systemToDelete, SystemName systemNameToDelete, @PathVariable("id") Long systemId) {
-        systemToDelete = systemDataService.loadSystemById(systemId);
-        systemNameToDelete = dictionaryService.loadSystemNameById(systemId);
+    public String deleteSystemAndSystemName(@PathVariable("id") Long systemId) {
+        MySystem systemToDelete = systemDataService.loadSystemById(systemId);
+        SystemName systemNameToDelete = dictionaryService.loadSystemNameById(systemId);
         systemDataService.deleteSystem(systemToDelete);
         dictionaryService.deleteSystemName(systemNameToDelete);
-        return "redirect:/contract/all";
-
+        return "redirect:/system/all";
     }
 }
 
