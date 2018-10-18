@@ -13,54 +13,11 @@
 
 </head>
 <body>
+
+<header th:replace="fragments/header :: header"/>
+
 <div class="container">
-    <div class="jumbotron"
-         style="background-image: url(https://avante.biz/wp-content/uploads/background-wallpaper/background-wallpaper-025.jpg)">
-        <div class="container">
-            <h5 class="display-4" style="color: ghostwhite">ContractManagementSystem</h5>
-        </div>
-    </div>
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand">Menu</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/}">Start</a>
-                    </li>
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" id="contractMenu" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Umowy
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/all}">Wszystkie umowy</a>
-                            <a class="dropdown-item" th:href="@{/active}">Aktywne umowy</a>
-                            <a class="dropdown-item" th:href="@{/add}">Dodaj umowe</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="systemMenu" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Systemy
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/allSystems}">Wszystkie systemy</a>
-                            <a class="dropdown-item" th:href="@{/active}">Szczegoly systemu</a>
-                            <a class="dropdown-item" th:href="@{/add}">Dodaj system</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/about}">O autorze</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
-    <br/>
-
-    <form action="#" th:action="@{/add}" th:object="${addContractDTO}" th:method="post">
+    <form action="#" th:action="@{/contract/add}" th:object="${addContractDTO}" th:method="post">
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="systemName">System</label>
@@ -82,17 +39,18 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="income">Wpływy</label>
+                <label for="income">Wplywy</label>
                 <div class="input-group">
                     <input type="number" class="form-control" aria-label="Small"
-                           aria-describedby="inputGroup-sizing-sm" id="income" th:field="*{myContract.income}"/>
+                           aria-describedby="inputGroup-sizing-sm" id="income" th:field="*{myContract.income}"
+                           placeholder="0.00"/>
                     <div class="input-group-append">
                         <span class="input-group-text" id="inputGroup-sizing-sm">PLN netto</span>
                     </div>
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="periodicity">Okresowość</label>
+                <label for="periodicity">Okresowosc</label>
                 <select class="custom-select" th:field="*{myContract.periodicity}" id="periodicity">
                     <option th:each="periodicity : *{periodicityList}" th:value="${periodicity.id}"
                             th:text="${periodicity.name}"></option>
@@ -100,29 +58,29 @@
             </div>
             <fieldset class="form-group col-md-3">
                 <legend class="col-form-label">Czy umowa jest aktywna?</legend>
-                <div class="input-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="activeIsTrue"
-                               th:value="true"
-                               th:field="*{myContract.active}" checked>
-                        <label class="form-check-label" for="activeIsTrue">
-                            TAK
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="activeIsFalse"
-                               th:value="false"
-                               th:field="*{myContract.active}" checked>
-                        <label class="form-check-label" for="activeIsFalse">
-                            NIE
-                        </label>
-                    </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="activeIsTrue"
+                           th:value="true"
+                           th:field="*{myContract.active}" checked>
+                    <label class="form-check-label" for="activeIsTrue">
+                        TAK
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="activeIsFalse"
+                           th:value="false"
+                           th:field="*{myContract.active}" checked>
+                    <label class="form-check-label" for="activeIsFalse">
+                        NIE
+                    </label>
                 </div>
             </fieldset>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Dodaj umowę</button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Dodaj umowe</button>
     </form>
 </div>
+
+<footer th:replace="fragments/footer :: footer"/>
 
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"

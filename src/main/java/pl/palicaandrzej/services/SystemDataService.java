@@ -13,5 +13,7 @@ public interface SystemDataService {
     MySystem loadSystemById(Long systemId);
 
     void addSystem(MySystem systemToSave);
+
+    void deleteSystem(MySystem systemToDelete);
 }
 

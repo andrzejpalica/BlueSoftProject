@@ -15,4 +15,6 @@ public interface ContractDataService {
     MyContract loadContractById(Long ContractId);
 
     void updateContract(MyContract contractToEdit);
+
+    void deleteContract(MyContract contractToDelete);
 }

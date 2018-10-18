@@ -11,4 +11,8 @@ public interface DictionaryService {
     List<Periodicity> getPeriodicity();
 
     SystemName addSystemName(SystemName systemName);
+
+    SystemName loadSystemNameById(Long systemId);
+
+    void deleteSystemName(SystemName systemNameToDelete);
 }

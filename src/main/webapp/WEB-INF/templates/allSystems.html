@@ -13,51 +13,9 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="jumbotron"
-         style="background-image: url(https://avante.biz/wp-content/uploads/background-wallpaper/background-wallpaper-025.jpg)">
-        <div class="container">
-            <h5 class="display-4" style="color: ghostwhite">ContractManagementSystem</h5>
-        </div>
-    </div>
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand">Menu</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/}">Start</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="contractMenu" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Umowy
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/all}">Wszystkie umowy</a>
-                            <a class="dropdown-item" th:href="@{/active}">Aktywne umowy</a>
-                            <a class="dropdown-item" th:href="@{/add}">Dodaj umowe</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="systemMenu" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Systemy
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{system/allSystems}">Wszystkie systemy</a>
-                            <a class="dropdown-item" th:href="@{system/add}">Dodaj system</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/about}">O autorze</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</div>
-<br/>
+
+<header th:replace="fragments/header :: header"/>
+
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead>
@@ -72,13 +30,17 @@
             <td th:text="${system.systemName}"/>
             <td th:text="${system.description}"/>
             <td>
-                <a th:href="@{system/{parametr}(parametr=${system.id})}" th:text="Szczegoly"></a>
+                <a th:href="@{~/system/{parametr}(parametr=${system.id})}" th:text="Szczegoly"></a>
+                <br/>
+                <a th:href="@{~/system/delete/{parametr}(parametr=${system.id})}" th:text="Usun"></a>
             </td>
-
         </tr>
         </tbody>
     </table>
 </div>
+
+<footer th:replace="fragments/footer :: footer"/>
+
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

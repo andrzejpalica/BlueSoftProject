@@ -12,7 +12,7 @@ import pl.palicaandrzej.services.DictionaryService;
 import java.util.List;
 
 @Controller
-@RequestMapping
+@RequestMapping ("/contract")
 public class ContractDataController {
 
     private final ContractDataService contractDataService;
@@ -78,21 +78,13 @@ public class ContractDataController {
 
         contractDataService.updateContract(contractToEdit);
 
-        return "redirect:/all";
+        return "redirect:/contract/all";
     }
 
     @GetMapping("delete/{id}")
-    public String deleteContract(Model model, @PathVariable("id") Long contractId) {
-        MyContract deletedContract = contractDataService.loadContractById(contractId);
-        model.addAttribute("deletedContract", deletedContract);
-        return "activeContracts";
-    }
-
-    @PutMapping("deleted/{id}")
-    public String deletedContract(@ModelAttribute("deletedContarct") MyContract contractToDelete) {
-
-        contractDataService.updateContract(contractToDelete);
-        return "redirect: editContract/" + contractToDelete.getId();
+    public String deletedContract(MyContract contractToDelete) {
+        contractDataService.deleteContract(contractToDelete);
+        return "redirect:/contract/all";
     }
 }
 

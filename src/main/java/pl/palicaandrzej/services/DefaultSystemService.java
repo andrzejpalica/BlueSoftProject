@@ -27,6 +27,11 @@ public class DefaultSystemService implements SystemDataService {
     }
 
     @Override
+    public void deleteSystem(MySystem systemToDelete) {
+        systemRepository.delete(systemToDelete);
+    }
+
+    @Override
     public MySystem loadSystemById(Long systemId) {
         Optional<MySystem> mySystemOptional = systemRepository.findById(systemId);
         if (mySystemOptional.isPresent()) {
@@ -35,5 +40,7 @@ public class DefaultSystemService implements SystemDataService {
             throw new NullPointerException("No contract with such ID!");
         }
     }
+
+
 
 }

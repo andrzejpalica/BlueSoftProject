@@ -48,5 +48,10 @@ public class DefaultContractService implements ContractDataService {
         contractRepository.save(contractToEdit);
     }
 
+    @Override
+    public void deleteContract(MyContract contractToDelete) {
+        contractRepository.delete(contractToDelete);
+    }
+
 
 }

@@ -39,4 +39,14 @@ public class DefaultDictionaryService implements DictionaryService {
     public SystemName addSystemName(SystemName systemName) {
         return systemNameRepository.save(systemName);
     }
+
+    @Override
+    public SystemName loadSystemNameById(Long systemId) {
+        return systemNameRepository.getOne(systemId);
+    }
+
+    @Override
+    public void deleteSystemName(SystemName systemNameToDelete) {
+        systemNameRepository.delete(systemNameToDelete);
+    }
 }

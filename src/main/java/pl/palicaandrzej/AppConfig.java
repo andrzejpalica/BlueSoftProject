@@ -1,5 +1,6 @@
 package pl.palicaandrzej;
 
+import com.sun.javafx.collections.MappingChange;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -23,6 +24,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.Properties;
 
 
@@ -92,19 +94,10 @@ public class AppConfig implements ApplicationContextAware {
         return new JdbcTemplate(dataSource);
     }
 
-//    @Bean
-//    public InternalResourceViewResolver viewResolver(
-//            @Value("${spring.mvc.view.prefix}") String prefix,
-//            @Value("${spring.mvc.view.suffix}") String suffix
-//    ) {
-//        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-//        viewResolver.setPrefix(prefix);
-//        viewResolver.setSuffix(suffix);
-//        return viewResolver;
-//    }
 
     @Bean
-    public SpringResourceTemplateResolver templateResolver() {
+    public SpringResourceTemplateResolver templateResolver(
+    ) {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(this.applicationContext);
         templateResolver.setPrefix("/WEB-INF/templates/");
