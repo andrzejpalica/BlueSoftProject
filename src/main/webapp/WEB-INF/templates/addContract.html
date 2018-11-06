@@ -22,7 +22,7 @@
             <div class="form-group col-md-4">
                 <label for="systemName">System</label>
                 <select class="custom-select" th:field="*{myContract.systemName}" id="systemName">
-                    <option th:each="systemName : *{systemNameList}" th:value="${systemName.id}"
+                    <option th:each="systemName : *{systemNameList}" th:value="${systemName}"
                             th:text="${systemName.name}"></option>
                 </select>
             </div>
@@ -52,7 +52,7 @@
             <div class="form-group col-md-4">
                 <label for="periodicity">Okresowosc</label>
                 <select class="custom-select" th:field="*{myContract.periodicity}" id="periodicity">
-                    <option th:each="periodicity : *{periodicityList}" th:value="${periodicity.id}"
+                    <option th:each="periodicity : *{periodicityList}" th:value="${periodicity}"
                             th:text="${periodicity.name}"></option>
                 </select>
             </div>
